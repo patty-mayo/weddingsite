@@ -1,113 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Christine &amp; Riley</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Open Graph tags (nice for social sharing) -->
-    <meta property="og:title" content="Christine & Riley">
-    <meta property="og:description" content="December 12, 2025">
-    <meta property="og:image" content="https://YOURDOMAIN.com/hero.jpg">
-    <meta property="og:url" content="https://YOURDOMAIN.com">
-    <style>
-        /* ==== BASIC RESET ==== */
-        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-        body { font-family:system-ui, sans-serif; line-height:1.6; color:#333; background:#fafafa; }
+<meta charset="UTF-8">
+<title>Christine & Riley – Wedding Invitation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        /* ==== LAYOUT ==== */
-        header { position:relative; height:70vh; background:url('hero.jpg') center/cover no-repeat; color:#fff; display:flex; align-items:center; justify-content:center; text-align:center; }
-        header::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.4); }
-        header h1 { position:relative; font-size:2.8rem; margin-bottom:.3rem; }
-        header p  { position:relative; font-size:1.2rem; }
+<!-- Google Fonts (Tangerine for the big title, Playfair Display for body) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
 
-        main { max-width:800px; margin:auto; padding:2rem 1rem; }
-        section { margin-bottom:3rem; }
-        h2 { font-size:2rem; margin-bottom:.8rem; border-bottom:2px solid #e0e0e0; padding-bottom:.3rem; }
-
-        /* ==== TEXT BLOCKS ==== */
-        .info { margin-top:.5rem; }
-        .info strong { display:inline-block; width:120px; }
-
-        /* ==== GALLERY ==== */
-        .gallery { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:.8rem; }
-        .gallery img { width:100%; height:auto; border-radius:4px; }
-
-        /* ==== RSVP FORM ==== */
-        form { display:flex; flex-direction:column; gap:.8rem; max-width:400px; }
-        input, textarea, button { padding:.8rem; font:inherit; border:1px solid #ccc; border-radius:4px; }
-        button { background:#0066cc; color:#fff; cursor:pointer; border:none; }
-        button:hover { background:#004999; }
-
-        /* ==== FOOTER ==== */
-        footer { text-align:center; padding:1.5rem 0; font-size:.9rem; color:#777; }
-    </style>
+<style>
+  :root{
+    --primary:#fcf5f2;      /* background */
+    --accent:#c07567;       /* headings, buttons, separators */
+    --text:#2c2c2c;
+    --max-width:820px;
+  }
+  body{
+    margin:0;
+    font-family:'Playfair Display', serif;
+    background:var(--primary);
+    color:var(--text);
+    line-height:1.6;
+  }
+  header{
+    background:var(--accent);
+    color:#fff;
+    text-align:center;
+    padding:2rem 1rem;
+  }
+  header h1{
+    margin:0;
+    font-family:'Tangerine', cursive;
+    font-size:3rem;
+    letter-spacing:.05em;
+  }
+  header p{
+    margin:.5rem 0;
+    font-size:1.2rem;
+  }
+  .hero{
+    position:relative;
+    height:260px;
+    background:url('hero.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    text-shadow:0 0 6px rgba(0,0,0,.6);
+  }
+  .hero h2{
+    font-family:'Tangerine', cursive;
+    font-size:2rem;
+    background:rgba(0,0,0,.35);
+    padding:.5rem 1rem;
+    border-radius:4px;
+  }
+  .content{
+    max-width:var(--max-width);
+    margin:auto;
+    padding:1.5rem;
+  }
+  .section{
+    margin-bottom:2rem;
+  }
+  .section h3{
+    color:var(--accent);
+    margin-top:0;
+    font-size:1.6rem;
+  }
+  a{
+    color:var(--accent);
+    text-decoration:none;
+  }
+  a:hover{
+    text-decoration:underline;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    padding:.6rem 1.2rem;
+    border-radius:4px;
+    text-decoration:none;
+    font-weight:500;
+    margin-top:.5rem;
+  }
+  .btn:hover{
+    opacity:.9;
+  }
+  .separator{
+    width:120px;
+    height:auto;
+    margin:1.5rem auto;
+  }
+  .faq dt{
+    font-weight:600;
+    margin-top:1rem;
+  }
+  .faq dd{
+    margin-left:1rem;
+    margin-bottom:.5rem;
+  }
+  footer{
+    background:#eee;
+    text-align:center;
+    padding:1rem;
+    font-size:.9rem;
+  }
+  @media(max-width:600px){
+    header h1{font-size:2.4rem;}
+    .hero{height:180px;}
+  }
+</style>
 </head>
+
 <body>
 
 <header>
-    <div>
-        <h1>Christine &amp; Riley</h1>
-        <p>December 12, 2025 • Colon, MI</p>
-    </div>Christine
+  <h1>Christine &amp; Riley</h1>
+  <p>December&nbsp;12,&nbsp;2025 • Colon, MI</p>
 </header>
 
-<main>
-    <!-- Ceremony -->
-    <section id="ceremony">
-        <h2>Ceremony</h2>
-        <div class="info"><strong>Date:</strong> December 12, 2025</div>
-        <div class="info"><strong>Time:</strong> 3:30 PM</div>
-        <div class="info"><strong>Venue:</strong> Colon Public Library</div>
-        <div class="info"><strong>Dress Code:</strong> Casual</div>
-        <iframe src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758492054721!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </section>
+<div class="hero">
+  <h2>Join us for a celebration of love</h2>
+</div>
 
-    <!-- Dinner -->
-    <section id="dinner">
-        <h2>Dinner</h2>
-        <div class="info"><strong>Location:</strong>Farrand Hall</div>
-        <div class="info"><strong>Time:</strong> 6:30 PM </div>
-        <p>Guests can arrive at Farrand Hall any time after 5:30 to enjoy beer, wine, and NA beverages. Dinner will begin at 6:30 </p>
-    </section>
+<main class="content">
 
-    <!-- Travel & Accommodations -->
-    <section id="travel">
-        <h2>Travel &amp; Accommodations</h2>
-        <p>There are a number of Airbnbs in Colon and the surrounding area.</p>
-    </section>
+  <!-- Decorative separator (bird on cocktail) -->
+  <img src="bird-cocktail.svg" alt="Bird on a cocktail illustration" class="separator">
 
-    <!-- Photo Gallery (optional) -->
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="gallery">
-            <img src="photo1.jpg" alt="Christine & Riley hiking">
-            <img src="photo2.jpg" alt="First kiss">
-            <img src="photo3.jpg" alt="Family portrait">
-            <img src="photo4.jpg" alt="Sunset view">
-        </div>
-    </section>
+  <!-- Venue & Date -->
+  <section class="section">
+    <h3>Our Day</h3>
+    <p><strong>Date &amp; Time:</strong> December 12, 2025 – 3:30 PM (ceremony)</p>
+    <p><strong>Venue:</strong> <a href="https://www.google.com/maps/place/Colon+Township+Library/@41.9582176,-85.328714,17z" target="_blank">Colon Public Library – Smith Room</a></p>
+  </section>
 
-    <!-- RSVP (optional) -->
-    <section id="rsvp">
-        <h2>RSVP</h2>
-        <p>Please let us know if you’ll be able to join us by filling out the form below.</p>
-        <form action="https://formspree.io/f/your-form-id" method="POST">
-            <input type="text" name="name" placeholder="Your name" required>
-            <input type="email" name="_replyto" placeholder="Email address" required>
-            <select name="attending" required>
-                <option value="">Will you attend?</option>
-                <option value="yes">Yes, I’ll be there</option>
-                <option value="no">Sorry, can’t make it</option>
-            </select>
-            <textarea name="message" rows="3" placeholder="Any dietary restrictions?"></textarea>
-            <button type="submit">Send RSVP</button>
-        </form>
-        <small>Form powered by <a href="https://formspree.io" target="_blank">Formspree</a>. No data is stored on our server.</small>
-    </section>
+  <!-- RSVP -->
+  <section class="section">
+    <h3>RSVP</h3>
+    <p>We have already reached out to most guests. If anything changes, please let us know.</p>
+    <p>Email: <a href="mailto:rsvp@christineandriley.com?subject=RSVP%20for%20our%20wedding">rsvp@christineandriley.com</a></p>
+    <a href="mailto:rsvp@christineandriley.com?subject=RSVP%20for%20our%20wedding" class="btn">Send RSVP</a>
+  </section>
+
+  <!-- FAQs -->
+  <section class="section faq">
+    <h3>Frequently Asked Questions</h3>
+    <dl>
+      <dt>Is this a wedding?</dt>
+      <dd>Yes! Think of it as an intimate elopement with our immediate families and closest friends.</dd>
+
+      <dt>What are the day’s events?</dt>
+      <dd>Ceremony at the Colon Public Library (Smith Room) at 3:30 PM. Afterwards a quick drink at Curly’s, then dinner at Farrand Hall starting at 6:30 PM.</dd>
+
+      <dt>Dress code?</dt>
+      <dd>Casual and comfortable—practical shoes recommended for grass and gravel. No ties, please.</dd>
+
+      <dt>Gifts/registry?</dt>
+      <dd>Your presence is the greatest gift. If you wish to contribute, we welcome honeymoon fund donations (cash, check, Venmo, Bitcoin) or a small donation to the Colon Public Library.</dd>
+
+      <dt>Do I need to RSVP?</dt>
+      <dd>We’ve already contacted most guests, but please let us know if your plans change.</dd>
+    </dl>
+  </section>
+
 </main>
 
 <footer>
-    © 2025 Christine &amp; Riley • <a href="mailto:cpeffer@pm.me">Questions? Let us know!</a>
+  © 2025 Christine &amp; Riley • All rights reserved
 </footer>
 
 </body>

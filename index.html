@@ -62,77 +62,43 @@
       background-position: center;
     }
 
-    <!-- Slideshow -->
-<section id="slideshow">
-  <div class="slideshow-container">
-    <div class="slides-wrapper" id="slidesWrapper">
-      <img src="images/slide1.jpg" alt="Wedding Photo 1">
-      <img src="images/slide2.jpg" alt="Wedding Photo 2">
-      <img src="images/slide3.jpg" alt="Wedding Photo 3">
-      <img src="images/slide4.jpg" alt="Wedding Photo 4">
-      <img src="images/slide5.jpg" alt="Wedding Photo 5">
-      <img src="images/slide6.jpg" alt="Wedding Photo 6">
-    </div>
-    <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-    <a class="next" onclick="moveSlide(1)">&#10095;</a>
+    <!-- Static Photo Grid -->
+<section id="photos">
+  <div class="photo-grid">
+    <img src="images/slide1.jpg" alt="Wedding Photo 1">
+    <img src="images/slide2.jpg" alt="Wedding Photo 2">
+    <img src="images/slide3.jpg" alt="Wedding Photo 3">
+    <img src="images/slide4.jpg" alt="Wedding Photo 4">
   </div>
 </section>
 
 <style>
-  .slideshow-container {
-    max-width: 100%;
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
     margin: 2rem auto;
-    overflow: hidden;
-    border-radius: 8px;
-    position: relative;
-    height: auto;
-    max-height: 400px; /* keeps it from being huge */
+    max-width: 1200px;
   }
 
-  .slides-wrapper {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-
-  .slides-wrapper img {
-    flex: 0 0 calc(100% / 3); /* show 3 at once on desktop */
-    max-height: 400px;
+  .photo-grid img {
     width: 100%;
-    object-fit: contain; /* no distortion */
-    padding: 0 5px; /* spacing between images */
-    background: #fff; /* gives nice padding effect */
+    height: 250px; /* consistent row height */
+    object-fit: cover; /* crops without distortion */
+    border-radius: 8px;
   }
 
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    padding: 10px;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    background-color: rgba(0,0,0,0.3);
-    border-radius: 50%;
-    user-select: none;
-    transform: translateY(-50%);
-    z-index: 2;
-  }
-
-  .prev { left: 10px; }
-  .next { right: 10px; }
-  .prev:hover, .next:hover { background-color: rgba(0,0,0,0.6); }
-
-  /* Tablet: 2 at a time */
+  /* Tablet: 2 per row */
   @media(max-width: 900px) {
-    .slides-wrapper img {
-      flex: 0 0 50%;
+    .photo-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  /* Mobile: 1 at a time */
+  /* Mobile: 1 per row */
   @media(max-width: 500px) {
-    .slides-wrapper img {
-      flex: 0 0 100%;
+    .photo-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

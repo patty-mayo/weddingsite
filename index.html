@@ -62,54 +62,55 @@
       background-position: center;
     }
 
-    /* Slideshow */
+    /* Carousel Slideshow */
     .slideshow-container {
-      position: relative;
       max-width: 100%;
       margin: 2rem auto;
-      border-radius: 8px;
+      display: flex;
       overflow: hidden;
+      height: 40vh; /* match hero */
+      border-radius: 8px;
+      position: relative;
     }
-    .mySlides { display: none; }
-    .mySlides img {
-      width: 100%;
-      height: auto;
+
+    .slides-wrapper {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slides-wrapper img {
+      width: calc(100% / 3); /* 3 images at once */
+      object-fit: cover;
+      height: 100%;
       display: block;
     }
-    .fade { animation: fadeEffect 1s; }
-    @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
 
-    /* Arrows */
     .prev, .next {
       cursor: pointer;
       position: absolute;
       top: 50%;
-      width: auto;
-      margin-top: -20px;
       padding: 10px;
       color: white;
       font-weight: bold;
       font-size: 24px;
-      border-radius: 0 3px 3px 0;
       background-color: rgba(0,0,0,0.3);
+      border-radius: 50%;
       user-select: none;
+      transform: translateY(-50%);
       z-index: 2;
     }
-    .next { right: 0; border-radius: 3px 0 0 3px; }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
     .prev:hover, .next:hover { background-color: rgba(0,0,0,0.6); }
 
-    /* Dots */
-    .dot {
-      cursor: pointer;
-      height: 12px;
-      width: 12px;
-      margin: 0 4px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.3s;
+    @media(max-width:768px){
+      .slides-wrapper img { width: 50%; } /* 2 images on tablet */
+      .prev, .next { font-size:18px; padding:8px; }
     }
-    .active, .dot:hover { background-color: #717171; }
+    @media(max-width:500px){
+      .slides-wrapper img { width: 100%; } /* 1 image on mobile */
+    }
 
     /* Maps */
     .map-container {
@@ -125,15 +126,6 @@
 
     footer { background: var(--background); text-align:center; padding:1.5rem; margin-top:3rem; }
 
-    @media(max-width:768px){
-      header h1{ font-size:2.2rem; }
-      .prev, .next { font-size:18px; padding:8px; }
-    }
-
-    @media(max-width:500px){
-      .dot { height:10px; width:10px; margin:0 3px; }
-    }
-
   </style>
 </head>
 <body>
@@ -142,8 +134,8 @@
   <header>
     <h1>Christine & Riley</h1>
     <p>December 12th, 2025 · Colon, MI</p>
-    <p>Ceremony | 3:30 p.m. Colon Township Library</p>
-    <p>Dinner | 6:30 p.m. Farrand Hall</p>
+    <p>Ceremony | 3:30 p.m. | Colon Township Library</p>
+    <p>Dinner | 6:30 p.m. | Farrand Hall</p>
   </header>
 
   <!-- Hero Image -->
@@ -160,50 +152,49 @@
     </ul>
   </nav>
 
-  <!-- Slideshow -->
+  <!-- Carousel Slideshow -->
   <section id="slideshow">
     <div class="slideshow-container">
-      <div class="mySlides fade"><img src="images/slide1.jpg" alt="Wedding Photo 1"></div>
-      <div class="mySlides fade"><img src="images/slide2.jpg" alt="Wedding Photo 2"></div>
-      <div class="mySlides fade"><img src="images/slide3.jpg" alt="Wedding Photo 3"></div>
-      <div class="mySlides fade"><img src="images/slide4.jpg" alt="Wedding Photo 4"></div>
-      <div class="mySlides fade"><img src="images/slide5.jpg" alt="Wedding Photo 5"></div>
-      <div class="mySlides fade"><img src="images/slide6.jpg" alt="Wedding Photo 6"></div>
-
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-
-    <div style="text-align:center; margin-top:10px;">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-      <span class="dot" onclick="currentSlide(4)"></span>
-      <span class="dot" onclick="currentSlide(5)"></span>
-      <span class="dot" onclick="currentSlide(6)"></span>
+      <div class="slides-wrapper" id="slidesWrapper">
+        <img src="images/slide1.jpg" alt="Wedding Photo 1">
+        <img src="images/slide2.jpg" alt="Wedding Photo 2">
+        <img src="images/slide3.jpg" alt="Wedding Photo 3">
+        <img src="images/slide4.jpg" alt="Wedding Photo 4">
+        <img src="images/slide5.jpg" alt="Wedding Photo 5">
+        <img src="images/slide6.jpg" alt="Wedding Photo 6">
+      </div>
+      <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+      <a class="next" onclick="moveSlide(1)">&#10095;</a>
     </div>
   </section>
 
   <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
+    const slidesWrapper = document.getElementById('slidesWrapper');
+    let index = 0;
 
-    function plusSlides(n) { showSlides(slideIndex += n); }
-    function currentSlide(n) { showSlides(slideIndex = n); }
+    function moveSlide(direction) {
+      const slides = slidesWrapper.children;
+      const visible = getVisibleCount(); // 3 normally
+      index += direction;
 
-    function showSlides(n) {
-      let i;
-      let slides = document.getElementsByClassName("mySlides");
-      let dots = document.getElementsByClassName("dot");
-      if (n > slides.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-      for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
-      slides[slideIndex-1].style.display = "block";  
-      dots[slideIndex-1].className += " active";
+      // loop around
+      if(index < 0) index = slides.length - visible;
+      if(index > slides.length - visible) index = 0;
+
+      const slideWidth = slides[0].offsetWidth;
+      slidesWrapper.style.transform = `translateX(${-slideWidth * index}px)`;
     }
 
-    setInterval(function(){ plusSlides(1); }, 5000);
+    function getVisibleCount() {
+      const width = window.innerWidth;
+      if(width <= 500) return 1;
+      if(width <= 768) return 2;
+      return 3;
+    }
+
+    window.addEventListener('resize', () => {
+      moveSlide(0);
+    });
   </script>
 
   <!-- FAQs -->

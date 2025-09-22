@@ -62,55 +62,80 @@
       background-position: center;
     }
 
-    /* Carousel Slideshow */
-    .slideshow-container {
-      max-width: 100%;
-      margin: 2rem auto;
-      display: flex;
-      overflow: hidden;
-      height: 40vh; /* match hero */
-      border-radius: 8px;
-      position: relative;
-    }
+    <!-- Slideshow -->
+<section id="slideshow">
+  <div class="slideshow-container">
+    <div class="slides-wrapper" id="slidesWrapper">
+      <img src="images/slide1.jpg" alt="Wedding Photo 1">
+      <img src="images/slide2.jpg" alt="Wedding Photo 2">
+      <img src="images/slide3.jpg" alt="Wedding Photo 3">
+      <img src="images/slide4.jpg" alt="Wedding Photo 4">
+      <img src="images/slide5.jpg" alt="Wedding Photo 5">
+      <img src="images/slide6.jpg" alt="Wedding Photo 6">
+    </div>
+    <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+    <a class="next" onclick="moveSlide(1)">&#10095;</a>
+  </div>
+</section>
 
-    .slides-wrapper {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
+<style>
+  .slideshow-container {
+    max-width: 100%;
+    margin: 2rem auto;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    height: auto;
+    max-height: 400px; /* keeps it from being huge */
+  }
 
+  .slides-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .slides-wrapper img {
+    flex: 0 0 calc(100% / 3); /* show 3 at once on desktop */
+    max-height: 400px;
+    width: 100%;
+    object-fit: contain; /* no distortion */
+    padding: 0 5px; /* spacing between images */
+    background: #fff; /* gives nice padding effect */
+  }
+
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    user-select: none;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .prev { left: 10px; }
+  .next { right: 10px; }
+  .prev:hover, .next:hover { background-color: rgba(0,0,0,0.6); }
+
+  /* Tablet: 2 at a time */
+  @media(max-width: 900px) {
     .slides-wrapper img {
-      width: calc(100% / 3); /* 3 images at once */
-      object-fit: cover;
-      height: 100%;
-      display: block;
+      flex: 0 0 50%;
     }
+  }
 
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      padding: 10px;
-      color: white;
-      font-weight: bold;
-      font-size: 24px;
-      background-color: rgba(0,0,0,0.3);
-      border-radius: 50%;
-      user-select: none;
-      transform: translateY(-50%);
-      z-index: 2;
+  /* Mobile: 1 at a time */
+  @media(max-width: 500px) {
+    .slides-wrapper img {
+      flex: 0 0 100%;
     }
-
-    .prev { left: 10px; }
-    .next { right: 10px; }
-    .prev:hover, .next:hover { background-color: rgba(0,0,0,0.6); }
-
-    @media(max-width:768px){
-      .slides-wrapper img { width: 50%; } /* 2 images on tablet */
-      .prev, .next { font-size:18px; padding:8px; }
-    }
-    @media(max-width:500px){
-      .slides-wrapper img { width: 100%; } /* 1 image on mobile */
-    }
+  }
+</style>
 
     /* Maps */
     .map-container {

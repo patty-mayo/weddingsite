@@ -4,147 +4,169 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Christine & Riley's Wedding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Lato&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Lato', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fdfdfb;
-      color: #333;
-      line-height: 1.6;
-      scroll-behavior: smooth; /* ✨ Smooth scrolling added */
+    :root {
+      --green-light: #e8f3ec;
+      --green-dark: #4a6a58;
+      --accent: #a7c4a0;
+      --text: #333;
+      --max-width: 800px;
     }
 
-    /* Navigation Bar */
-    nav {
-      background: #dfe8e1;
-      color: #2e4032;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
+    body {
       margin: 0;
-      padding: 0.5rem;
-    }
-    nav ul li {
-      margin: 0 1rem;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #2e4032;
-      font-weight: bold;
-      transition: color 0.2s ease;
-    }
-    nav ul li a:hover {
-      color: #3d6652;
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
-      background: #dfe8e1;
-      color: #2e4032;
+      background: var(--green-light);
       text-align: center;
-      padding: 4rem 1rem 3rem;
+      padding: 2rem 1rem;
     }
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: 3rem;
-      margin-bottom: 0.5rem;
+      margin: 0.5rem 0;
+      color: var(--green-dark);
     }
     header p {
+      margin: 0.2rem 0;
       font-size: 1.2rem;
     }
 
+    /* Hero image */
+    .hero {
+      width: 100%;
+      max-height: 450px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem;
+    }
+    nav li {
+      margin: 0 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--green-dark);
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+
     section {
-      max-width: 900px;
+      max-width: var(--max-width);
       margin: 3rem auto;
       padding: 0 1rem;
     }
     h2 {
       font-family: 'Playfair Display', serif;
-      border-bottom: 2px solid #cdd7cf;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-      color: #2e4032;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--green-dark);
+      text-align: center;
     }
     h3 {
       font-family: 'Playfair Display', serif;
-      color: #445a48;
-      margin-top: 1.2rem;
+      font-size: 1.3rem;
+      color: var(--green-dark);
+      margin-top: 1.5rem;
     }
 
-    .faq {
+    .faq p, section p, li {
+      font-size: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    /* Photo placeholders / gallery */
+    .photo-gallery {
+      display: flex;
+      justify-content: center;
       margin-bottom: 2rem;
     }
-    a {
-      color: #3d6652;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .photo {
-      text-align: center;
-      margin: 2rem 0;
-    }
-    .photo img {
+    .photo-gallery img {
       max-width: 100%;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     footer {
+      background: var(--green-light);
       text-align: center;
-      background: #dfe8e1;
-      color: #2e4032;
       padding: 1.5rem;
       margin-top: 3rem;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#faqs">FAQs</a></li>
-      <li><a href="#photos">Photos</a></li>
-      <li><a href="#places">Places to Stay</a></li>
-      <li><a href="#things">Things to Do</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero/Header -->
   <header>
     <h1>Christine & Riley</h1>
     <p>December 12th, 2025 · Colon, MI</p>
-    <p>3:30 Colon Township Library · Dinner to follow at Farrand Hall</p>
+    <p>Ceremony | 3:30 p.m. | Colon Township Library</p>
+    <p>Dinner | 6:30 p.m. | Farrand Hall</p>
   </header>
 
-  <!-- Photos -->
-  <section class="photo" id="photos">
-    <img src="your-photo-1.jpg" alt="Christine and Riley" />
-    <p><em>(Add your favorite photo here)</em></p>
+  <!-- Hero Image -->
+  <div class="hero">
+    <img src="images/hero-image.jpg" alt="Christine & Riley">
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#gallery">Photos</a></li>
+      <li><a href="#faqs">FAQs</a></li>
+      <li><a href="#stay">Places to Stay</a></li>
+      <li><a href="#todo">Things to Do</a></li>
+    </ul>
+  </nav>
+
+  <!-- Photo Gallery -->
+  <section id="gallery">
+    <h2>Photos</h2>
+    <div class="photo-gallery">
+      <img src="images/photos-weddingsite.jpg" alt="Wedding photo gallery">
+    </div>
   </section>
 
   <!-- FAQs -->
   <section id="faqs">
     <h2>FAQs</h2>
     <div class="faq">
-      <h3>Is this a wedding?</h3>
+      <h3>...Is this a wedding?</h3>
       <p>Yes! Think of this celebration as an elopement that we could not have imagined without the presence of our immediate families and closest friends. We have intentionally stripped this day down so we can focus on only that which is essential and most sacred to us.</p>
 
       <h3>What are the details for the day's events?</h3>
-      <p>The ceremony will be held at the Colon Public Library in the Smith Room at 3:30. Please plan to arrive between 3:00 and 3:15. Following the ceremony, you can head across the street to Curly's, a local watering hole, and have a quick drink before dinner. Guests may start arriving at Farrand Hall at 5:30, where you can enjoy beer, wine, and NA beverages on us. Dinner starts at 6:30. For those curious, you can check Farrand Hall's website to get excited for the dining experience.</p>
+      <p>The ceremony will be held at the Colon Township Library in the Smith Room at 3:30. Please plan to arrive between 3:00 and 3:15. Following the ceremony, you can head across the street to Curly's, a local watering hole, and have a quick drink before dinner. Guests may start arriving at Farrand Hall at 5:30, where you can enjoy beer, wine, and NA beverages on us. Dinner starts at 6:30. For those curious you can check Farrand Hall's website to get excited for the dining experience.</p>
 
       <h3>What is the dress code?</h3>
       <p>Please keep it casual with us. Our wedding day will be intimate and unconventional, and we want your comfort to be reflected in that. Farrand Hall does not have a dress code and recommends to each guest: "come as you are." We will be dressing up a bit, but we invite you to join us in prioritizing simplicity over formality. Practical shoes are encouraged as you will be walking on grass and gravel. Per groom's wishes ties are highly discouraged.</p>
@@ -157,35 +179,20 @@
     </div>
   </section>
 
-  <section class="photo">
-    <img src="your-photo-2.jpg" alt="Wedding venue" />
-    <p><em>(Add another photo — maybe your venue or something meaningful)</em></p>
-  </section>
-
-  <!-- Places to Stay -->
-  <section id="places">
+  <section id="stay">
     <h2>Places to Stay</h2>
-    <p>There are lots of Airbnb options in the area! Here are a few we think look particularly cozy:</p>
-    <ul>
-      <li><a href="https://www.airbnb.com/rooms/891886301858579932?check_in=2025-12-12&check_out=2025-12-13&guests=1&adults=1&s=67&unique_share_id=333461c0-f5b1-4ea3-9b61-95337fa58417" target="_blank">Airbnb Option 1</a></li>
-      <li><a href="https://www.airbnb.com/rooms/1450135153155864502?check_in=2025-12-11&check_out=2025-12-13&guests=1&adults=1&s=67&unique_share_id=89871cb6-abf2-4fd6-8b01-53923b0bd293" target="_blank">Airbnb Option 2</a></li>
-    </ul>
+    <p>There are lots of Airbnb options in the area!</p>
   </section>
 
-  <section class="photo">
-    <img src="your-photo-3.jpg" alt="Colon, Michigan" />
-    <p><em>(Add a scenic or fun photo here)</em></p>
-  </section>
-
-  <!-- Things to Do -->
-  <section id="things">
-    <h2>Things to Do</h2>
+  <section id="todo">
+    <h2>Things to Do in Colon</h2>
     <h3>Magic stuff</h3>
     <ul>
       <li>Abbot Magic Shop</li>
       <li>Fab Magic Company (open until 5 pm?)</li>
       <li>Sterlini Theatre and Magic</li>
     </ul>
+
     <h3>Breakfast and lunch options</h3>
     <ul>
       <li>Magic Capital Grille</li>

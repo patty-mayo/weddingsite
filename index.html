@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Christine & Riley's Wedding</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -15,10 +14,7 @@
       --max-width: 800px;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Open Sans', sans-serif;
@@ -27,31 +23,16 @@
       line-height: 1.6;
     }
 
-    /* Header */
     header {
       text-align: center;
       padding: 2rem 1rem;
       background: var(--background);
     }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin: 0.5rem 0;
-      color: var(--heading-color);
-    }
-    header p {
-      margin: 0.2rem 0;
-      font-size: 1.2rem;
-      color: var(--text);
-    }
+    header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--heading-color); margin:0.5rem 0; }
+    header p { margin:0.2rem 0; font-size:1.2rem; color: var(--text); }
 
-    /* Headings */
-    h2, h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--heading-color);
-    }
+    h2, h3 { font-family: 'Playfair Display', serif; color: var(--heading-color); }
 
-    /* Nav */
     nav {
       position: sticky;
       top: 0;
@@ -59,85 +40,87 @@
       border-bottom: 2px solid var(--accent);
       z-index: 1000;
     }
-    nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 1rem;
-    }
-    nav li {
-      margin: 0 1rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--heading-color);
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: var(--accent);
-    }
+    nav ul { display:flex; justify-content:center; list-style:none; margin:0; padding:1rem; }
+    nav li { margin:0 1rem; }
+    nav a { text-decoration:none; color: var(--heading-color); font-weight:bold; }
+    nav a:hover { color: var(--accent); }
 
-    /* Hero */
+    section { max-width: var(--max-width); margin:3rem auto; padding:0 1rem; }
+    .faq p, section p, li { font-size:1rem; }
+    ul { padding-left: 1.5rem; }
+
+    /* Hero Slideshow */
     .hero {
       position: relative;
       width: 100%;
       height: 80vh;
-      background-image: url('images/hero-image.png');
-      background-size: cover;
-      background-position: center;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: var(--heading-color);
     }
-    .hero::before {
-      content: '';
+    .hero-slide {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(252, 245, 242, 0.6); /* overlay for readability */
-      z-index: 1;
-    }
-
-    /* Sections */
-    section {
-      max-width: var(--max-width);
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-    .faq p, section p, li {
-      font-size: 1rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-
-    /* Photo gallery */
-    .photo-gallery {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .photo-gallery img {
       width: 100%;
-      border-radius: 8px;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .hero-slide.active { opacity: 1; }
+
+    .hero::before {
+      content:'';
+      position:absolute; top:0; left:0; right:0; bottom:0;
+      background: rgba(252,245,242,0.5);
+      z-index:1;
     }
 
-    /* Footer */
-    footer {
-      background: var(--background);
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
+    /* Minimal Overlay with date/location */
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      color: var(--heading-color);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      font-size: 1.3rem;
+    }
+
+    /* Photo Gallery Lightbox */
+    .photo-gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:2rem; }
+    .photo-gallery img {
+      max-width: 48%;
+      border-radius:8px;
+      cursor:pointer;
+      transition: transform 0.3s;
+    }
+    .photo-gallery img:hover { transform: scale(1.05); }
+
+    .lightbox {
+      display:none;
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.8);
+      justify-content:center; align-items:center;
+      z-index:10000;
+    }
+    .lightbox img {
+      max-width:90%; max-height:90%;
+      border-radius:10px;
+    }
+
+    footer { background: var(--background); text-align:center; padding:1.5rem; margin-top:3rem; }
+
+    @media(max-width:768px){
+      .hero-text{ font-size:1.1rem; }
+      .photo-gallery img{ max-width:100%; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Header (site title/date above hero) -->
   <header>
     <h1>Christine & Riley</h1>
     <p>December 12th, 2025 · Colon, MI</p>
@@ -145,10 +128,14 @@
     <p>Dinner | 6:30 p.m. | Farrand Hall</p>
   </header>
 
-  <!-- Hero Image -->
+  <!-- Hero Slideshow -->
   <div class="hero">
+    <div class="hero-slide active" style="background-image:url('images/hero-image1.png')"></div>
+    <div class="hero-slide" style="background-image:url('images/hero-image2.png')"></div>
+    <div class="hero-slide" style="background-image:url('images/hero-image3.png')"></div>
+
+    <!-- Minimal overlay with just date/location -->
     <div class="hero-text">
-      <h1>Christine & Riley</h1>
       <p>December 12th, 2025 · Colon, MI</p>
     </div>
   </div>
@@ -167,7 +154,10 @@
   <section id="gallery">
     <h2>Photos</h2>
     <div class="photo-gallery">
-      <img src="images/photos-weddingsite.jpg" alt="Wedding photo gallery">
+      <img src="images/photo1.jpg" alt="Wedding photo">
+      <img src="images/photo2.jpg" alt="Wedding photo">
+      <img src="images/photo3.jpg" alt="Wedding photo">
+      <img src="images/photo4.jpg" alt="Wedding photo">
     </div>
   </section>
 
@@ -176,19 +166,15 @@
     <h2>FAQs</h2>
     <div class="faq">
       <h3>...Is this a wedding?</h3>
-      <p>Yes! Think of this celebration as an elopement that we could not have imagined without the presence of our immediate families and closest friends. We have intentionally stripped this day down so we can focus on only that which is essential and most sacred to us.</p>
-
+      <p>Yes! Think of this celebration as an elopement...</p>
       <h3>What are the details for the day's events?</h3>
-      <p>The ceremony will be held at the Colon Township Library in the Smith Room at 3:30. Please plan to arrive between 3:00 and 3:15. Following the ceremony, you can head across the street to Curly's, a local watering hole, and have a quick drink before dinner. Guests may start arriving at Farrand Hall at 5:30, where you can enjoy beer, wine, and NA beverages on us. Dinner starts at 6:30. For those curious you can check Farrand Hall's website to get excited for the dining experience.</p>
-
+      <p>The ceremony will be held at the Colon Township Library...</p>
       <h3>What is the dress code?</h3>
-      <p>Please keep it casual with us. Our wedding day will be intimate and unconventional, and we want your comfort to be reflected in that. Farrand Hall does not have a dress code and recommends to each guest: "come as you are." We will be dressing up a bit, but we invite you to join us in prioritizing simplicity over formality. Practical shoes are encouraged as you will be walking on grass and gravel. Per groom's wishes ties are highly discouraged.</p>
-
+      <p>Please keep it casual...</p>
       <h3>Gifts/registry?</h3>
-      <p>We have all that we need in life and we view your presence on this day as a gift in itself. Your time is truly the most precious thing you can give us. If you feel strongly about giving us a gift, we will accept contributions toward our honeymoon fund (cash, check, Venmo, and of course Bitcoin). You are also welcome to make a small donation to the Colon Public Library in our names.</p>
-
+      <p>We have all that we need...</p>
       <h3>Do I need to RSVP?</h3>
-      <p>Since we purchased dinner tickets individually ahead of time for each guest, we have likely already been in touch about whether you can make it. We understand that life is unpredictable, though, so if something comes up, please let us know!</p>
+      <p>Since we purchased dinner tickets individually...</p>
     </div>
   </section>
 
@@ -204,7 +190,7 @@
     <h3>Magic stuff</h3>
     <ul>
       <li>Abbot Magic Shop</li>
-      <li>Fab Magic Company (open until 5 pm?)</li>
+      <li>Fab Magic Company</li>
       <li>Sterlini Theatre and Magic</li>
     </ul>
     <h3>Breakfast and lunch options</h3>
@@ -218,6 +204,38 @@
   <footer>
     <p>We can’t wait to celebrate with you! ❤️</p>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Enlarged photo">
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Hero slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 5000);
+
+    // Gallery lightbox
+    const galleryImages = document.querySelectorAll('.photo-gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
 
 </body>
 </html>

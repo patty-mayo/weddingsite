@@ -43,7 +43,7 @@
       border-bottom: 2px solid var(--accent);
       z-index: 1000;
     }
-    nav ul { display:flex; justify-content:center; list-style:none; margin:0; padding:1rem; }
+    nav ul { display:flex; justify-content:center; list-style:none; margin:0; padding:1rem; flex-wrap: wrap;}
     nav li { margin:0 1rem; }
     nav a { text-decoration:none; color: var(--heading-color); font-weight:bold; }
     nav a:hover { color: var(--accent); }
@@ -70,11 +70,42 @@
       overflow: hidden;
     }
 
-    .slides {
-      display: none;
-      width: 100%;
-      border-radius: 8px;
+    .mySlides { display: none; }
+    .fade { animation: fadeEffect 1s; }
+
+    @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
+
+    /* Arrows */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -20px;
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      border-radius: 0 3px 3px 0;
+      background-color: rgba(0,0,0,0.3);
+      user-select: none;
+      z-index: 2;
     }
+    .next { right: 0; border-radius: 3px 0 0 3px; }
+    .prev:hover, .next:hover { background-color: rgba(0,0,0,0.6); }
+
+    /* Dots */
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+    .active, .dot:hover { background-color: #717171; }
 
     /* Locations iframes */
     .map-container {
@@ -101,8 +132,8 @@
   <header>
     <h1>Christine & Riley</h1>
     <p>December 12th, 2025 · Colon, MI</p>
-    <p><b>Ceremony</b> | 3:30 p.m. Colon Township Library</p>
-    <p><b>Dinner</b> | 6:30 p.m. Farrand Hall</p>
+    <p>Ceremony | 3:30 p.m. | Colon Township Library</p>
+    <p>Dinner | 6:30 p.m. | Farrand Hall</p>
   </header>
 
   <!-- Hero image -->
@@ -120,28 +151,61 @@
 
   <!-- Slideshow -->
   <div class="slideshow-container">
-    <img class="slides" src="images/slide1.jpg" alt="Wedding Photo 1">
-    <img class="slides" src="images/slide2.jpg" alt="Wedding Photo 2">
-    <img class="slides" src="images/slide3.jpg" alt="Wedding Photo 3">
-    <img class="slides" src="images/slide4.jpg" alt="Wedding Photo 4">
-    <img class="slides" src="images/slide5.jpg" alt="Wedding Photo 5">
-    <img class="slides" src="images/slide6.jpg" alt="Wedding Photo 6">
+
+    <div class="mySlides fade">
+      <img src="images/slide1.jpg" style="width:100%" alt="Wedding Photo 1">
+    </div>
+    <div class="mySlides fade">
+      <img src="images/slide2.jpg" style="width:100%" alt="Wedding Photo 2">
+    </div>
+    <div class="mySlides fade">
+      <img src="images/slide3.jpg" style="width:100%" alt="Wedding Photo 3">
+    </div>
+    <div class="mySlides fade">
+      <img src="images/slide4.jpg" style="width:100%" alt="Wedding Photo 4">
+    </div>
+    <div class="mySlides fade">
+      <img src="images/slide5.jpg" style="width:100%" alt="Wedding Photo 5">
+    </div>
+    <div class="mySlides fade">
+      <img src="images/slide6.jpg" style="width:100%" alt="Wedding Photo 6">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  </div>
+
+  <div style="text-align:center; margin-top:10px;">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
   </div>
 
   <script>
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) { showSlides(slideIndex += n); }
+    function currentSlide(n) { showSlides(slideIndex = n); }
+
+    function showSlides(n) {
       let i;
-      let slides = document.getElementsByClassName("slides");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}    
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+      for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
       slides[slideIndex-1].style.display = "block";  
-      setTimeout(showSlides, 4000); // Change image every 4 seconds
+      dots[slideIndex-1].className += " active";
     }
+
+    // Optional: auto-slide
+    setInterval(function(){ plusSlides(1); }, 5000);
   </script>
 
   <!-- FAQs -->
@@ -169,28 +233,18 @@
   <section id="locations">
     <h2>Locations</h2>
 
-    <!-- Ceremony -->
     <h3>Ceremony</h3>
     <p>Colon Township Library, Smith Room<br>
        128 S Blackstone Ave, Colon, MI 49040, United States</p>
     <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758503769943!5m2!1sen!2sus" 
-        allowfullscreen="" 
-        loading="lazy">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758503769943!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <!-- Dinner -->
     <h3>Dinner</h3>
     <p>Farrand Hall<br>
        58522 Farrand Rd, Colon, MI 49040</p>
     <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.415336973645!2d-85.34492528842392!3d41.94841317111412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b758a5e6adb1%3A0xc2a9b8e7607ba7a9!2sFarrand%20Hall!5e0!3m2!1sen!2sus!4v1758503791622!5m2!1sen!2sus" 
-        allowfullscreen="" 
-        loading="lazy">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.415336973645!2d-85.34492528842392!3d41.94841317111412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b758a5e6adb1%3A0xc2a9b8e7607ba7a9!2sFarrand%20Hall!5e0!3m2!1sen!2sus!4v1758503791622!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </section>
 

@@ -49,37 +49,27 @@
     .faq p, section p, li { font-size:1rem; }
     ul { padding-left: 1.5rem; }
 
-    /* Hero Slideshow */
+    /* Static Hero Image */
     .hero {
       position: relative;
       width: 100%;
       height: 80vh;
-      overflow: hidden;
+      background-image: url('images/hero-image.png');
+      background-size: cover;
+      background-position: center;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: var(--heading-color);
     }
-    .hero-slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-    }
-    .hero-slide.active { opacity: 1; }
-
     .hero::before {
       content:'';
       position:absolute; top:0; left:0; right:0; bottom:0;
       background: rgba(252,245,242,0.5);
       z-index:1;
     }
-
-    /* Minimal Overlay with date/location */
+    /* Minimal overlay with date/location */
     .hero-text {
       position: relative;
       z-index: 2;
@@ -120,7 +110,7 @@
 </head>
 <body>
 
-  <!-- Header (site title/date above hero) -->
+  <!-- Header -->
   <header>
     <h1>Christine & Riley</h1>
     <p>December 12th, 2025 · Colon, MI</p>
@@ -128,13 +118,8 @@
     <p>Dinner | 6:30 p.m. | Farrand Hall</p>
   </header>
 
-  <!-- Hero Slideshow -->
+  <!-- Static Hero Image -->
   <div class="hero">
-    <div class="hero-slide active" style="background-image:url('images/hero-image1.png')"></div>
-    <div class="hero-slide" style="background-image:url('images/hero-image2.png')"></div>
-    <div class="hero-slide" style="background-image:url('images/hero-image3.png')"></div>
-
-    <!-- Minimal overlay with just date/location -->
     <div class="hero-text">
       <p>December 12th, 2025 · Colon, MI</p>
     </div>
@@ -175,67 +160,4 @@
       <p>We have all that we need...</p>
       <h3>Do I need to RSVP?</h3>
       <p>Since we purchased dinner tickets individually...</p>
-    </div>
-  </section>
-
-  <!-- Places to Stay -->
-  <section id="stay">
-    <h2>Places to Stay</h2>
-    <p>There are lots of Airbnb options in the area!</p>
-  </section>
-
-  <!-- Things to Do -->
-  <section id="todo">
-    <h2>Things to Do in Colon</h2>
-    <h3>Magic stuff</h3>
-    <ul>
-      <li>Abbot Magic Shop</li>
-      <li>Fab Magic Company</li>
-      <li>Sterlini Theatre and Magic</li>
-    </ul>
-    <h3>Breakfast and lunch options</h3>
-    <ul>
-      <li>Magic Capital Grille</li>
-      <li>Dawn's Cafe</li>
-      <li>Farrand Hall Bakery</li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>We can’t wait to celebrate with you! ❤️</p>
-  </footer>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="Enlarged photo">
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    // Hero slideshow
-    const slides = document.querySelectorAll('.hero-slide');
-    let currentSlide = 0;
-    setInterval(() => {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }, 5000);
-
-    // Gallery lightbox
-    const galleryImages = document.querySelectorAll('.photo-gallery img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = lightbox.querySelector('img');
-
-    galleryImages.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-      });
-    });
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
-  </script>
-
-</body>
-</html>
+    </div

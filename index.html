@@ -55,7 +55,7 @@
     /* Static Hero Image */
     .hero {
       width: 100%;
-      height: 50vh; /* shorter */
+      height: 50vh;
       background-image: url('images/hero-image.png');
       background-size: cover;
       background-position: center;
@@ -142,6 +142,7 @@
   <!-- Navigation -->
   <nav>
     <ul>
+      <li><a href="#slideshow">Photos</a></li>
       <li><a href="#faqs">FAQs</a></li>
       <li><a href="#locations">Locations</a></li>
       <li><a href="#stay">Places to Stay</a></li>
@@ -149,41 +150,44 @@
     </ul>
   </nav>
 
-  <!-- Slideshow -->
-  <div class="slideshow-container">
+  <!-- Slideshow Section -->
+  <section id="slideshow">
+    <div class="slideshow-container">
 
-    <div class="mySlides fade">
-      <img src="images/slide1.jpg" style="width:100%" alt="Wedding Photo 1">
-    </div>
-    <div class="mySlides fade">
-      <img src="images/slide2.jpg" style="width:100%" alt="Wedding Photo 2">
-    </div>
-    <div class="mySlides fade">
-      <img src="images/slide3.jpg" style="width:100%" alt="Wedding Photo 3">
-    </div>
-    <div class="mySlides fade">
-      <img src="images/slide4.jpg" style="width:100%" alt="Wedding Photo 4">
-    </div>
-    <div class="mySlides fade">
-      <img src="images/slide5.jpg" style="width:100%" alt="Wedding Photo 5">
-    </div>
-    <div class="mySlides fade">
-      <img src="images/slide6.jpg" style="width:100%" alt="Wedding Photo 6">
+      <div class="mySlides fade">
+        <img src="images/slide1.jpg" style="width:100%" alt="Wedding Photo 1">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/slide2.jpg" style="width:100%" alt="Wedding Photo 2">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/slide3.jpg" style="width:100%" alt="Wedding Photo 3">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/slide4.jpg" style="width:100%" alt="Wedding Photo 4">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/slide5.jpg" style="width:100%" alt="Wedding Photo 5">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/slide6.jpg" style="width:100%" alt="Wedding Photo 6">
+      </div>
+
+      <!-- Arrows -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-  </div>
-
-  <div style="text-align:center; margin-top:10px;">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-    <span class="dot" onclick="currentSlide(4)"></span>
-    <span class="dot" onclick="currentSlide(5)"></span>
-    <span class="dot" onclick="currentSlide(6)"></span>
-  </div>
+    <!-- Dots -->
+    <div style="text-align:center; margin-top:10px;">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+      <span class="dot" onclick="currentSlide(6)"></span>
+    </div>
+  </section>
 
   <script>
     let slideIndex = 1;
@@ -204,7 +208,6 @@
       dots[slideIndex-1].className += " active";
     }
 
-    // Optional: auto-slide
     setInterval(function(){ plusSlides(1); }, 5000);
   </script>
 
@@ -237,37 +240,36 @@
     <p>Colon Township Library, Smith Room<br>
        128 S Blackstone Ave, Colon, MI 49040, United States</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758503769943!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758503769943!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <h3>Dinner</h3>
     <p>Farrand Hall<br>
        58522 Farrand Rd, Colon, MI 49040</p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.415336973645!2d-85.34492528842392!3d41.94841317111412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b758a5e6adb1%3A0xc2a9b8e7607ba7a9!2sFarrand%20Hall!5e0!3m2!1sen!2sus!4v1758503791622!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.415336973645!2d-85.34492528842392!3d41.94841317111412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b758a5e6adb1%3A0xc2a9b8e7607ba7a9!2sFarrand%20Hall!5e0!3m2!1sen!2sus!4v1758503791622!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 
   <!-- Places to Stay -->
   <section id="stay">
     <h2>Places to Stay</h2>
-    <p>There are lots of Airbnb options in the area! Here are a few we think look particularly cozy:</p>
     <ul>
-      <li><a href="https://www.airbnb.com/rooms/891886301858579932?check_in=2025-12-12&check_out=2025-12-13&guests=1&adults=1&s=67&unique_share_id=333461c0-f5b1-4ea3-9b61-95337fa58417">Airbnb Option 1</a></li>
-      <li><a href="https://www.airbnb.com/rooms/1450135153155864502?check_in=2025-12-11&check_out=2025-12-13&guests=1&adults=1&s=67&unique_share_id=89871cb6-abf2-4fd6-8b01-53923b0bd293">Airbnb Option 2</a></li>
+      <li><a href="https://www.airbnb.com/rooms/891886301858579932?check_in=2025-12-12&check_out=2025-12-13&guests=1&adults=1&s=67&unique_share_id=333461c0-f5b1-4ea3-9b61-95337fa58417" target="_blank">Airbnb Option 1</a></li>
+      <li><a href="https://www.airbnb.com/rooms/1450135153155864502?check_in=2025-12-11&check_out=2025-12-13&guests=1&adults=1&s=67&unique_share_id=89871cb6-abf2-4fd6-8b01-53923b0bd293" target="_blank">Airbnb Option 2</a></li>
     </ul>
   </section>
 
   <!-- Things to Do -->
   <section id="todo">
     <h2>Things to Do in Colon</h2>
-    <h3>Magic stuff</h3>
+    <h3>Magic Stuff</h3>
     <ul>
       <li>Abbot Magic Shop</li>
       <li>Fab Magic Company (open until 5 pm?)</li>
       <li>Sterlini Theatre and Magic</li>
     </ul>
-    <h3>Breakfast and lunch options</h3>
+    <h3>Breakfast and Lunch Options</h3>
     <ul>
       <li>Magic Capital Grille</li>
       <li>Dawn's Cafe</li>
@@ -276,8 +278,7 @@
   </section>
 
   <footer>
-    <p>We can’t wait to celebrate with you! ❤️</p>
+    &copy; 2025 Christine & Riley. All Rights Reserved.
   </footer>
-
 </body>
 </html>

@@ -3,196 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Christine & Riley's Wedding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <title>Christine & Riley</title>
   <style>
-    :root {
-      --background: #fcf5f2;
-      --heading-color: #c07567; 
-      --heading-h2-color: #a85b50; 
-      --accent: #d4a79d;
-      --text: #333;
-      --max-width: 800px;
-    }
-
-    html { scroll-behavior: smooth; }
     body {
+      font-family: 'Georgia', serif;
+      background-color: #fcf5f2;
+      color: #333;
       margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      color: var(--text);
-      background: var(--background);
+      padding: 0;
       line-height: 1.6;
     }
 
     header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: var(--background);
-    }
-    header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--heading-color); margin:0.5rem 0; }
-    header p { margin:0.2rem 0; font-size:1.2rem; color: var(--text); }
-
-    h2, h3 { font-family: 'Playfair Display', serif; }
-    h2 { color: var(--heading-h2-color); }
-    h3 { color: var(--heading-color); }
-
-    nav {
       position: sticky;
       top: 0;
-      background-color: var(--background);
-      border-bottom: 2px solid var(--accent);
+      background: white;
       z-index: 1000;
+      border-bottom: 1px solid #ddd;
     }
-    nav ul { display:flex; justify-content:center; list-style:none; margin:0; padding:1rem; flex-wrap: wrap;}
-    nav li { margin:0 1rem; }
-    nav a { text-decoration:none; color: var(--heading-color); font-weight:bold; }
-    nav a:hover { color: var(--accent); }
 
-    section { max-width: var(--max-width); margin:3rem auto; padding:0 1rem; }
-    section p, li { font-size:1rem; }
-    ul { padding-left: 1.5rem; }
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
 
-    /* Hero Image - shorter */
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #c07567;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     .hero {
       width: 100%;
       height: 40vh;
-      min-height: 250px;
-      background-image: url('images/hero-image.png');
-      background-size: cover;
-      background-position: center;
+      background: url('images/hero-image.png') no-repeat center center/cover;
     }
 
-    <!-- Static Photo Grid -->
-<section id="photos">
-  <div class="photo-grid">
-    <img src="images/slide1.jpg" alt="Wedding Photo 1">
-    <img src="images/slide2.jpg" alt="Wedding Photo 2">
-    <img src="images/slide3.jpg" alt="Wedding Photo 3">
-    <img src="images/slide4.jpg" alt="Wedding Photo 4">
-  </div>
-</section>
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-<style>
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin: 2rem auto;
-    max-width: 1200px;
-  }
+    h1, h2, h3 {
+      font-family: 'Georgia', serif;
+      color: #c07567;
+      text-align: center;
+    }
 
-  .photo-grid img {
-    width: 100%;
-    height: 250px; /* consistent row height */
-    object-fit: cover; /* crops without distortion */
-    border-radius: 8px;
-  }
+    h1 {
+      margin-top: 1rem;
+      font-size: 2.5rem;
+    }
 
-  /* Tablet: 2 per row */
-  @media(max-width: 900px) {
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* Static photo grid */
     .photo-grid {
-      grid-template-columns: repeat(2, 1fr);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 2rem auto;
+      max-width: 900px;
     }
-  }
 
-  /* Mobile: 1 per row */
-  @media(max-width: 500px) {
-    .photo-grid {
-      grid-template-columns: 1fr;
+    .photo-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
     }
-  }
-</style>
+
+    /* Responsive photo grid */
+    @media(max-width: 900px) {
+      .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width: 500px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* Maps */
     .map-container {
-      max-width: var(--max-width);
-      margin: 1rem auto;
+      margin: 2rem 0;
     }
-    .map-container iframe {
+
+    iframe {
       width: 100%;
       height: 300px;
       border: 0;
       border-radius: 8px;
     }
 
-    footer { background: var(--background); text-align:center; padding:1.5rem; margin-top:3rem; }
-
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #fff;
+      margin-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Sticky Navbar -->
   <header>
-    <h1>Christine & Riley</h1>
-    <p>December 12th, 2025 · Colon, MI</p>
-    <p>Ceremony | 3:30 p.m. | Colon Township Library</p>
-    <p>Dinner | 6:30 p.m. | Farrand Hall</p>
+    <nav>
+      <a href="#details">Details</a>
+      <a href="#faq">FAQs</a>
+      <a href="#places">Places to Stay</a>
+      <a href="#things">Things to Do</a>
+      <a href="#maps">Maps</a>
+    </nav>
   </header>
 
   <!-- Hero Image -->
-  <div class="hero"></div>
+  <section class="hero"></section>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#slideshow">Photos</a></li>
-      <li><a href="#faqs">FAQs</a></li>
-      <li><a href="#locations">Locations</a></li>
-      <li><a href="#stay">Places to Stay</a></li>
-      <li><a href="#todo">Things to Do</a></li>
-    </ul>
-  </nav>
+  <main>
+    <!-- Page Heading -->
+    <h1>Christine & Riley</h1>
+    <p style="text-align:center;">December 12th, 2025 | Colon, MI</p>
+    <p style="text-align:center;">Ceremony | 3:30 p.m. | Colon Township Library</p>
+    <p style="text-align:center;">Dinner | 6:30 p.m. | Farrand Hall</p>
 
-  <!-- Carousel Slideshow -->
-  <section id="slideshow">
-    <div class="slideshow-container">
-      <div class="slides-wrapper" id="slidesWrapper">
+    <!-- Static Photos -->
+    <section id="photos">
+      <div class="photo-grid">
         <img src="images/slide1.jpg" alt="Wedding Photo 1">
         <img src="images/slide2.jpg" alt="Wedding Photo 2">
         <img src="images/slide3.jpg" alt="Wedding Photo 3">
         <img src="images/slide4.jpg" alt="Wedding Photo 4">
-        <img src="images/slide5.jpg" alt="Wedding Photo 5">
-        <img src="images/slide6.jpg" alt="Wedding Photo 6">
       </div>
-      <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-      <a class="next" onclick="moveSlide(1)">&#10095;</a>
-    </div>
-  </section>
+    </section>
 
-  <script>
-    const slidesWrapper = document.getElementById('slidesWrapper');
-    let index = 0;
+    <!-- FAQs -->
+    <section id="faq">
+      <h2>FAQs</h2>
 
-    function moveSlide(direction) {
-      const slides = slidesWrapper.children;
-      const visible = getVisibleCount(); // 3 normally
-      index += direction;
-
-      // loop around
-      if(index < 0) index = slides.length - visible;
-      if(index > slides.length - visible) index = 0;
-
-      const slideWidth = slides[0].offsetWidth;
-      slidesWrapper.style.transform = `translateX(${-slideWidth * index}px)`;
-    }
-
-    function getVisibleCount() {
-      const width = window.innerWidth;
-      if(width <= 500) return 1;
-      if(width <= 768) return 2;
-      return 3;
-    }
-
-    window.addEventListener('resize', () => {
-      moveSlide(0);
-    });
-  </script>
-
-  <!-- FAQs -->
-  <section id="faqs">
-    <h2>FAQs</h2>
-    <div class="faq">
-      <h3>...Is this a wedding?</h3>
+      <h3>Is this a wedding?</h3>
       <p>Yes! Think of this celebration as an elopement that we could not have imagined without the presence of our immediate families and closest friends. We have intentionally stripped this day down so we can focus on only that which is essential and most sacred to us.</p>
 
       <h3>What are the details for the day's events?</h3>
@@ -206,56 +177,53 @@
 
       <h3>Do I need to RSVP?</h3>
       <p>Since we purchased dinner tickets individually ahead of time for each guest, we have likely already been in touch about whether you can make it. We understand that life is unpredictable, though, so if something comes up, please let us know!</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Locations -->
-  <section id="locations">
-    <h2>Locations</h2>
+    <!-- Places to Stay -->
+    <section id="places">
+      <h2>Places to Stay</h2>
+      <p>There are lots of Airbnb options in the area!</p>
+    </section>
 
-    <h3>Ceremony</h3>
-    <p>Colon Township Library, Smith Room<br>
-       128 S Blackstone Ave, Colon, MI 49040, United States</p>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758503769943!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <!-- Things to Do -->
+    <section id="things">
+      <h2>Things to Do in Colon</h2>
 
-    <h3>Dinner</h3>
-    <p>Farrand Hall<br>
-       58522 Farrand Rd, Colon, MI 49040</p>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.415336973645!2d-85.34492528842392!3d41.94841317111412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b758a5e6adb1%3A0xc2a9b8e7607ba7a9!2sFarrand%20Hall!5e0!3m2!1sen!2sus!4v1758503791622!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </section>
+      <h3>Magic Stuff</h3>
+      <ul>
+        <li>Abbot Magic Shop</li>
+        <li>Fab Magic Company (open until 5 pm?)</li>
+        <li>Sterlini Theatre and Magic</li>
+      </ul>
 
-  <!-- Places to Stay -->
-  <section id="stay">
-    <h2>Places to Stay</h2>
-    <ul>
-      <li><a href="https://www.airbnb.com/rooms/891886301858579932?check_in=2025-12-12&check_out=2025-12-13&guests=1&adults=1&s=67&unique_share_id=333461c0-f5b1-4ea3-9b61-95337fa58417" target="_blank">Airbnb Option 1</a></li>
-      <li><a href="https://www.airbnb.com/rooms/1450135153155864502?check_in=2025-12-11&check_out=2025-12-13&guests=1&adults=1&s=67&unique_share_id=89871cb6-abf2-4fd6-8b01-53923b0bd293" target="_blank">Airbnb Option 2</a></li>
-    </ul>
-  </section>
+      <h3>Breakfast and Lunch Options</h3>
+      <ul>
+        <li>Magic Capital Grille</li>
+        <li>Dawn's Cafe</li>
+        <li>Farrand Hall Bakery</li>
+      </ul>
+    </section>
 
-  <!-- Things to Do -->
-  <section id="todo">
-    <h2>Things to Do in Colon</h2>
-    <h3>Magic Stuff</h3>
-    <ul>
-      <li>Abbot Magic Shop</li>
-      <li>Fab Magic Company (open until 5 pm?)</li>
-      <li>Sterlini Theatre and Magic</li>
-    </ul>
-    <h3>Breakfast and Lunch Options</h3>
-    <ul>
-      <li>Magic Capital Grille</li>
-      <li>Dawn's Cafe</li>
-      <li>Farrand Hall Bakery</li>
-    </ul>
-  </section>
+    <!-- Maps -->
+    <section id="maps">
+      <h2>Maps</h2>
+
+      <div class="map-container">
+        <h3>Ceremony – Colon Township Library</h3>
+        <p>128 S Blackstone Ave, Colon, MI 49040</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758503769943!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="map-container">
+        <h3>Dinner – Farrand Hall</h3>
+        <p>58522 Farrand Rd, Colon, MI 49040</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.415336973645!2d-85.34492528842392!3d41.94841317111412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b758a5e6adb1%3A0xc2a9b8e7607ba7a9!2sFarrand%20Hall!5e0!3m2!1sen!2sus!4v1758503791622!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Christine & Riley. All Rights Reserved.
+    <p>Christine & Riley – December 12th, 2025</p>
   </footer>
 </body>
 </html>

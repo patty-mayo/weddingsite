@@ -68,16 +68,16 @@
     }
     .nav a:hover { color: #8b4b42; }
 
-    /* Hero: purely visual, no overlay text */
-    .hero {
-      width:100%;
-      height:40vh;           /* shorter hero */
-      min-height:220px;
-      background-image: url('images/hero-image.png');
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
+.hero {
+  width: 100%;
+  height: 40vh;           /* keep the height you like */
+  min-height: 220px;
+  background-image: url('images/hero-image.png');
+  background-position: center center;  /* centers the image */
+  background-size: contain;            /* shows the full image without cropping */
+  background-repeat: no-repeat;
+  background-color: #fcf5f2;          /* optional: fills empty space with page background */
+}
 
     /* Main content wrapper */
     main {

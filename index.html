@@ -1,211 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Christine & Riley</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
+    :root{
+      --background: #fcf5f2;
+      --heading-color: #c07567;     /* primary heading (h3, accents, divider) */
+      --heading-h2-color: #a85b50;  /* slightly darker for H2 */
+      --text: #333;
+      --max-width: 900px;
+    }
+
+    /* Basic */
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Georgia', serif;
       margin: 0;
-      padding: 0;
-      background-color: #fcf5f2;
-      color: #333;
+      font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: var(--text);
+      background: var(--background);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
       line-height: 1.6;
     }
 
-    header {
-      text-align: center;
-      background: url('images/hero-image.png') center/cover no-repeat;
-      color: white;
-      padding: 5rem 1rem;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin: 0;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    nav {
+    /* Top nav area (keeps site name + nav separate from hero) */
+    .topbar {
+      background: white;
       position: sticky;
       top: 0;
-      background-color: rgba(252, 245, 242, 0.95);
-      padding: 0.75rem;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
       z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .topbar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.9rem 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .site-title {
+      font-family: "Playfair Display", serif;
+      color: var(--heading-color);
+      font-size: 1.1rem;
+      font-weight:700;
+      margin:0;
+    }
+    .nav {
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .nav a {
+      color: var(--heading-color);
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.95rem;
+    }
+    .nav a:hover { color: #8b4b42; }
+
+    /* Hero: purely visual, no overlay text */
+    .hero {
+      width:100%;
+      height:40vh;           /* shorter hero */
+      min-height:220px;
+      background-image: url('images/hero-image.png');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #c07567;
-      font-weight: bold;
-    }
-
-    section {
-      max-width: 900px;
+    /* Main content wrapper */
+    main {
+      max-width: var(--max-width);
       margin: 2rem auto;
       padding: 0 1rem;
     }
 
-    h2 {
-      font-family: 'Playfair Display', serif;
-      color: #a05248; /* slightly darker than #c07567 */
-      margin-top: 3rem;
+    h1 {
+      font-family: "Playfair Display", serif;
+      color: var(--heading-color);
+      font-size: 2.2rem;
+      text-align:center;
+      margin: 0.5rem 0 0.25rem 0;
+    }
+    .sub {
+      text-align:center;
+      color: #444;
+      margin: 0 0 1rem 0;
+      font-size: 1rem;
     }
 
-    h3 {
-      font-family: 'Playfair Display', serif;
-      color: #c07567;
-      margin-top: 1.5rem;
+    /* H2 / H3 */
+    h2 { font-family:"Playfair Display", serif; color: var(--heading-h2-color); font-size:1.6rem; margin-top:2rem; text-align:left;}
+    h3 { font-family:"Playfair Display", serif; color: var(--heading-color); font-size:1.15rem; margin-top:1.25rem; }
+
+    /* Section divider you asked for */
+    hr.section-divider {
+      border: 0;
+      border-top: 2px solid var(--heading-color);
+      width: 60%;
+      margin: 2rem auto;
     }
 
-    .divider {
-      border: none;
-      border-top: 1px solid #ddd;
-      margin: 2rem 0;
-    }
-
-    .image-grid {
+    /* Photo grid centered in same width as main text */
+    .photo-grid {
+      max-width: var(--max-width);
+      margin: 1.5rem auto 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      align-items: stretch;
+      justify-items: center;
     }
-
-    .image-grid img {
+    .photo-grid img {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      display:block;
+      background: #f3ece9;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+    /* If an image 404s we'll hide it via JS (keeps alt text from showing in layout) */
+
+    @media (max-width: 900px) {
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-grid img { height: 220px; }
+    }
+    @media (max-width: 520px) {
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid img { height: 200px; }
+      .topbar-inner { padding:0.6rem 1rem; }
     }
 
+    /* Maps */
     .map-container {
-      margin: 2rem 0;
+      margin: 1.25rem 0 2rem;
     }
-
     .map-container iframe {
       width: 100%;
-      height: 400px;
+      height: 360px;
       border: 0;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
 
+    /* Footer */
     footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #f3ece9;
-      margin-top: 3rem;
+      max-width: var(--max-width);
+      margin: 3rem auto;
+      padding: 1.5rem 1rem;
+      text-align:center;
+      color: #6b4a46;
+      font-size:0.95rem;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Christine & Riley</h1>
-    <p>December 12th, 2025 — Colon, MI</p>
-  </header>
-
-  <nav>
-    <a href="#details">Details</a>
-    <a href="#faqs">FAQs</a>
-    <a href="#lodging">Places to Stay</a>
-    <a href="#things">Things to Do</a>
-    <a href="#locations">Locations</a>
-  </nav>
-
-  <section id="details">
-    <h2>Ceremony & Dinner</h2>
-    <p><strong>Ceremony:</strong> 3:30 p.m. at Colon Township Library</p>
-    <p><strong>Dinner:</strong> 6:30 p.m. at Farrand Hall</p>
-  </section>
-
-  <hr class="divider">
-
-  <section>
-    <div class="image-grid">
-      <img src="images/photo1.jpg" alt="Wedding photo 1">
-      <img src="images/photo2.jpg" alt="Wedding photo 2">
-      <img src="images/photo3.jpg" alt="Wedding photo 3">
-      <img src="images/photo4.jpg" alt="Wedding photo 4">
+  <!-- Topbar (site title + nav) -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="site-title">Christine &amp; Riley</div>
+      <nav class="nav">
+        <a href="#details">Details</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#photos">Photos</a>
+        <a href="#locations">Locations</a>
+        <a href="#places">Places to Stay</a>
+      </nav>
     </div>
-  </section>
+  </div>
 
-  <hr class="divider">
+  <!-- Hero (pure image, no overlay text) -->
+  <div class="hero" aria-hidden="true"></div>
 
-  <section id="faqs">
-    <h2>FAQs</h2>
+  <!-- Main content -->
+  <main>
+    <h1>Christine &amp; Riley</h1>
+    <div class="sub">December 12th, 2025 · Colon, MI — Ceremony 3:30 p.m. · Dinner 6:30 p.m.</div>
 
-    <h3>Is this a wedding?</h3>
-    <p>Yes! Think of this celebration as an elopement that we could not have imagined without the presence of our immediate families and closest friends. We have intentionally stripped this day down so we can focus on only that which is essential and most sacred to us.</p>
+    <!-- Photo grid (four images) -->
+    <section id="photos" aria-labelledby="photosHeading">
+      <h2 id="photosHeading">Photos</h2>
+      <div class="photo-grid">
+        <!-- IMPORTANT: make sure these exact filenames exist in your repo (case-sensitive) -->
+        <img src="images/slide1.jpg" alt="Photo 1" loading="lazy" data-filename="images/slide1.jpg">
+        <img src="images/slide2.jpg" alt="Photo 2" loading="lazy" data-filename="images/slide2.jpg">
+        <img src="images/slide3.jpg" alt="Photo 3" loading="lazy" data-filename="images/slide3.jpg">
+        <img src="images/slide4.jpg" alt="Photo 4" loading="lazy" data-filename="images/slide4.jpg">
+      </div>
+    </section>
 
-    <h3>What are the details for the day's events?</h3>
-    <p>The ceremony will be held at the Colon Township Library in the Smith Room at 3:30. Please plan to arrive between 3:00 and 3:15. Following the ceremony, you can head across the street to Curly's, a local watering hole, and have a quick drink before dinner. Guests may start arriving at Farrand Hall at 5:30, where you can enjoy beer, wine, and NA beverages on us. Dinner starts at 6:30.</p>
+    <hr class="section-divider">
 
-    <h3>What is the dress code?</h3>
-    <p>Please keep it casual with us. Our wedding day will be intimate and unconventional, and we want your comfort to be reflected in that. Farrand Hall does not have a dress code and recommends to each guest: "come as you are." We will be dressing up a bit, but we invite you to join us in prioritizing simplicity over formality. Practical shoes are encouraged as you will be walking on grass and gravel. Per groom's wishes ties are highly discouraged.</p>
+    <!-- FAQs -->
+    <section id="faqs">
+      <h2>FAQs</h2>
 
-    <h3>Gifts/Registry?</h3>
-    <p>We have all that we need in life and we view your presence on this day as a gift in itself. Your time is truly the most precious thing you can give us. If you feel strongly about giving us a gift, we will accept contributions toward our honeymoon fund (cash, check, Venmo, or Bitcoin). You are also welcome to make a small donation to the Colon Public Library in our names.</p>
+      <h3>...Is this a wedding?</h3>
+      <p>Yes! Think of this celebration as an elopement that we could not have imagined without the presence of our immediate families and closest friends. We have intentionally stripped this day down so we can focus on only that which is essential and most sacred to us.</p>
 
-    <h3>Do I need to RSVP?</h3>
-    <p>Since we purchased dinner tickets individually ahead of time for each guest, we have likely already been in touch about whether you can make it. We understand that life is unpredictable, though, so if something comes up, please let us know!</p>
-  </section>
+      <h3>What are the details for the day's events?</h3>
+      <p>The ceremony will be held at the Colon Township Library in the Smith Room at 3:30. Please plan to arrive between 3:00 and 3:15. Following the ceremony, you can head across the street to Curly's, a local watering hole, and have a quick drink before dinner. Guests may start arriving at Farrand Hall at 5:30, where you can enjoy beer, wine, and NA beverages on us. Dinner starts at 6:30.</p>
 
-  <hr class="divider">
+      <h3>What is the dress code?</h3>
+      <p>Please keep it casual with us. Our wedding day will be intimate and unconventional, and we want your comfort to be reflected in that. Farrand Hall does not have a dress code and recommends to each guest: "come as you are." Practical shoes are encouraged as you will be walking on grass and gravel. Per groom's wishes ties are highly discouraged.</p>
 
-  <section id="lodging">
-    <h2>Places to Stay</h2>
-    <p>There are lots of Airbnb options in the area!</p>
-  </section>
+      <h3>Gifts/registry?</h3>
+      <p>We have all that we need in life and we view your presence on this day as a gift in itself. If you feel strongly about giving us a gift, contributions toward our honeymoon fund are appreciated (cash, check, Venmo, or Bitcoin). You may also donate to the Colon Public Library in our names.</p>
 
-  <hr class="divider">
+      <h3>Do I need to RSVP?</h3>
+      <p>Since we purchased dinner tickets individually ahead of time for each guest, we have likely already been in touch about whether you can make it. If something changes, please let us know!</p>
+    </section>
 
-  <section id="things">
-    <h2>Things to Do in Colon</h2>
-    <h3>Magic Stuff</h3>
-    <ul>
-      <li>Abbot Magic Shop</li>
-      <li>Fab Magic Company</li>
-      <li>Sterlini Theatre and Magic</li>
-    </ul>
+    <hr class="section-divider">
 
-    <h3>Breakfast & Lunch</h3>
-    <ul>
-      <li>Magic Capital Grille</li>
-      <li>Dawn's Cafe</li>
-      <li>Farrand Hall Bakery</li>
-    </ul>
-  </section>
+    <!-- Locations (maps) -->
+    <section id="locations">
+      <h2>Locations</h2>
 
-  <hr class="divider">
+      <div class="map-container">
+        <h3>Ceremony — Colon Township Library</h3>
+        <p>128 S Blackstone Ave, Colon, MI 49040</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758503769943!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-  <section id="locations">
-    <h2>Locations</h2>
+      <div class="map-container">
+        <h3>Dinner — Farrand Hall</h3>
+        <p>58522 Farrand Rd, Colon, MI 49040</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.415336973645!2d-85.34492528842392!3d41.94841317111412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b758a5e6adb1%3A0xc2a9b8e7607ba7a9!2sFarrand%20Hall!5e0!3m2!1sen!2sus!4v1758503791622!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
 
-    <div class="map-container">
-      <h3>Ceremony – Colon Township Library</h3>
-      <p>128 S Blackstone Ave, Colon, MI 49040</p>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.958912339188!2d-85.32871398842342!3d41.95821757111307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b7119044efd9%3A0xf3d744698413af26!2sColon%20Township%20Library!5e0!3m2!1sen!2sus!4v1758503769943!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <hr class="section-divider">
 
-    <div class="map-container">
-      <h3>Dinner – Farrand Hall</h3>
-      <p>58522 Farrand Rd, Colon, MI 49040</p>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.415336973645!2d-85.34492528842392!3d41.94841317111412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817b758a5e6adb1%3A0xc2a9b8e7607ba7a9!2sFarrand%20Hall!5e0!3m2!1sen!2sus!4v1758503791622!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </section>
+    <!-- Places to Stay -->
+    <section id="places">
+      <h2>Places to Stay</h2>
+      <p>There are lots of Airbnb options in the area — see your invitation for a couple we like.</p>
+    </section>
+
+  </main>
 
   <footer>
-    <p>With love, Christine & Riley</p>
+    <p>With love, Christine &amp; Riley — December 12th, 2025</p>
   </footer>
 
+  <script>
+    // Hide broken images so alt text doesn't show as ugly blocks.
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.photo-grid img').forEach(img => {
+        img.addEventListener('error', () => {
+          // If an image fails to load, hide it so layout remains clean
+          img.style.display = 'none';
+        });
+      });
+    });
+  </script>
 </body>
 </html>

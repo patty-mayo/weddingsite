@@ -79,6 +79,15 @@
       background-color: #fcf5f2;
     }
 
+    @media (max-width: 600px) {
+  .hero {
+    height: 60vh;          /* taller for mobile */
+    min-height: 300px;     /* gives breathing room */
+    background-size: cover;  /* allows some cropping for a full look */
+    background-position: center top; /* crop from bottom first */
+  }
+}
+
     /* Main content */
     main {
       max-width: var(--max-width);
